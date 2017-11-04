@@ -4,7 +4,7 @@
 DROP DATABASE mldn ;
 CREATE DATABASE mldn CHARACTER SET UTF8 ;
 USE mldn ;
--- 创建部门信息表，所拥有的权限与部门信息有关
+-- 创建部门信息表，所拥有的权限与部门信息有关        
 CREATE TABLE dept (
    did                  bigint	AUTO_INCREMENT ,
    dname                varchar(50),
