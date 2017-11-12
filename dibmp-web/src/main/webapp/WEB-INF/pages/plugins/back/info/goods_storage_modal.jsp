@@ -20,11 +20,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="text-primary">
-								<td class="text-left">通州一号仓库</td>
-								<td class="text-center">北京</td>
-								<td class="text-center">北京</td>
-								<td class="text-center">2000</td>
+							<tr class="text-primary"     id = "wid" >
+								<td class="text-left"    id = "daname"></td>
+								<td class="text-center"  id ="pid"></td>
+								<td class="text-center"  id ="cid"></td>
+								<td class="text-center"  id ="currnum"></td>
+							
+								<!--   $("#photo").attr("src","upload/emp/" + data.emp.photo) ; -->
 							</tr>
 						</tbody>
 					</table>

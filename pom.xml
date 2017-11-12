@@ -55,8 +55,16 @@
 		<resources.dir>src/main/resources</resources.dir>
 	</properties>
 
+
 	<dependencyManagement>
+	<!-- fastDFS依赖 start-->
 		<dependencies>
+			<dependency>
+			<groupId>com.github.kischang</groupId>
+			<artifactId>fastdfs-client</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<!-- fastDFS依赖 end-->
 			<dependency>
 				<groupId>cn.mldn</groupId>
 				<artifactId>dibmp-util</artifactId>
@@ -443,7 +451,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<plugin><!-- fastDFS图片插件 -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${compiler.version}</version>

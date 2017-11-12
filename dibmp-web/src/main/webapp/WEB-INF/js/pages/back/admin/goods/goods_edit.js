@@ -41,7 +41,7 @@ $(function(){
 				required : true ,
 				digits : true 
 			},
-			"pic" : {
+			"photo" : {
 				required : true ,
 				accept : ["jpg","png","gif","bmp"]
 			},
@@ -50,4 +50,27 @@ $(function(){
 			}
 		}
 	});
+	$("#wiid").on("change",function(){
+		wiid=$(this).val();
+		console.log(wiid);
+		if(wiid!=""){
+			$.post("pages/back/admin/goods/getSubtypeByWiid.action",{"wiid":wiid},function(data){
+				$("#stid").empty();
+				for(var x = 0 ; x < data.length ; x++ ){
+					temp = data[x];
+				$("#stid").append("<option value=" + temp.stid + "> "+ temp.title + "</option>");
+				}
+			},"json");
+			
+		}else{
+			$("#stid").empty();
+			$("#stid").append("<option value=''>====== 请选择商品所属子分类 ======</option>");
+			
+		}
+		
+	})
+	
+	
+	
+	
 })

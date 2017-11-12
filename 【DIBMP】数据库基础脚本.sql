@@ -16,7 +16,7 @@ CREATE TABLE dept (
 
 -- 创建职位信息表，用于确定等级
 CREATE TABLE level (
-   lid                  int ,
+   lid                  bigint	AUTO_INCREMENT ,
    title                varchar(50),
    losal				double ,
    hisal				double ,
@@ -113,7 +113,7 @@ CREATE TABLE subtype (
 -- 商品信息表
 CREATE TABLE goods(
 	gid		bigint auto_increment ,	
-	name		bigint ,
+	name		varchar(50),
 	wiid		bigint ,
 	stid		bigint ,
 	price		double ,

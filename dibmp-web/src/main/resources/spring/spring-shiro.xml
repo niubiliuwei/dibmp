@@ -14,7 +14,7 @@
 		<property name="cacheManagerConfigFile" value="classpath:shiro/ehcache.xml"/>
 	</bean>
 	
-	<!-- 定义一个Cookie记住我的功能管理器 -->
+	<!-- 定义一个Cookie记住我的功能管理器 --> 
 	<bean id="remembermeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
 		<!-- 定义要进行记住我功能的Cookie处理对象 -->
 		<property name="cookie" ref="remembermeCookie"/>

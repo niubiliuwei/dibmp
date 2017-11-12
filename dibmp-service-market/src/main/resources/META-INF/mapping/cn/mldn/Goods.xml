@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mldn.dibmp.dao.IGoodsDAO">
+	<!-- <select id="findAllByMember" parameterType="String" resultType="String">
+		SELECT actid FROM action WHERE rid IN (
+			SELECT rid FROM dept_role WHERE did=(
+				SELECT did FROM member WHERE mid=#{mid})) ;
+	</select>  -->
+	
+	<update id="doEdit" parameterType="Goods">
+	UPDATE goods SET name=#{name},weight=#{weight},wiid=#{wiid},price=#{price},photo=#{photo},note=#{note},stid=#{stid} WHERE gid=#{gid}
+	</update>
+	<insert id = "doCreate" parameterType="Goods">
+		INSERT INTO goods (name,weight,wiid,price,photo,note,stid,lastin,stornum,recorder,delflag) VALUES (#{name},#{weight},#{wiid},#{price},#{photo},#{note},#{stid},#{lastin},#{stornum},#{recorder},#{delflag});
+	</insert>
+	<select id = "findByName" parameterType="String" resultType="Goods">
+		SELECT gid,name,weight,wiid,price,photo,note,stid,lastin,stornum,recorder,delflag FROM goods WHERE name=#{name};
+	</select>
+	<select id = "findAllWitem"  resultType="Witem" >
+		SELECT title,wiid FROM witem
+	</select>
+	<select id="findSubtypeByWiid" parameterType="Long" resultType="Subtype">
+		SELECT stid,title FROM subtype where wiid = #{wiid} 
+	</select>
+	<select id="findSplitOrderByGid" parameterType="Map" resultType="Goods">
+		select gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag
+		from goods where delflag = 0  
+		<if test="column != null and keyWord != null">
+			and ${column} like #{keyWord}
+		</if>
+		order by gid limit #{startPage},#{lineSize}
+	</select>
+		<select id="getSplitCount" parameterType="Map" resultType="Long">
+		select count(*) from goods where delflag = 0  
+		<if test="column != null and keyWord != null">
+			and ${column} like #{keyWord}
+		</if>
+	</select>
+	<select id="findNameByMid" parameterType="String" resultType="String">
+		SELECT name FROM member WHERE mid=#{mid}
+	</select>
+	
+	<select id="findAllByGid" parameterType="Long" resultType="Goods">
+		SELECT gid,name,weight,wiid,price,photo,note,stid,lastin,stornum,recorder FROM goods WHERE gid=#{gid}
+	</select>
+	<select id="findAllByWiid" parameterType="Long" resultType="Warehouse">
+		SELECT name,pid,cid,currnum FROM warehouse WHERE wiid=#{wiid}
+	</select>
+	<select id="findCityByCid" parameterType="Long" resultType="City">
+		SELECT title,pid FROM city WHERE cid=#{cid}
+	</select>
+	<select id="findProvinceBypid" parameterType="Long" resultType="Province">
+		SELECT title FROM province WHERE pid=#{pid}
+	</select>
+	<select id="findMemberByMid" parameterType="String" resultType="Member">
+		SELECT name,note,phone,lid,did FROM member WHERE mid=#{mid}
+	</select>
+	<select id="findLevelByLid" parameterType="Long" resultType="Level">
+		SELECT title,lid FROM level WHERE lid=#{lid}
+	</select>
+	<select id="findDepteByDid" parameterType="Long" resultType="Dept">
+		SELECT dname,did FROM dept WHERE did=#{did}
+	</select>
+	
+	
+	
+</mapper>

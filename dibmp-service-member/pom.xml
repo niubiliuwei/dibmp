@@ -165,5 +165,9 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 		</dependency>
+			<dependency>
+		<groupId>com.github.kischang</groupId>
+		<artifactId>fastdfs-client</artifactId>
+	</dependency>
 	</dependencies>
 </project>
